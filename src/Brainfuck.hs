@@ -27,7 +27,7 @@ decPointer (Data (p:prev) d next) = Data prev p (d:next)
 
 -- Update the byte at the pointer using a function
 modifyByte :: (Word8 -> Word8) -> Data -> Data
-modifyByte f dat@Data{..} = dat{currByte=f currByte}
+modifyByte f Data{..} = Data{currByte=f currByte, ..}
 
 runProgram :: Program -> StateT Data IO ()
 runProgram [] = return ()
